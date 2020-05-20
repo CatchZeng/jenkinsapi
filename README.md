@@ -28,10 +28,21 @@ go get github.com/CatchZeng/jenkinsapi
 
 ## Usage
 
+### Config.yaml
+
+create `config.yaml` in `$HOME/.jenkinsapi` folder.
+
+```yaml
+# $HOME/.jenkinsapi/config.yaml
+host: "https://jenkins.catchzeng.com/"
+username: "admin"
+token: "xazcasdasdasdadfsfsaefew"
+```
+
 ### Docker
 
 ```shell
-docker run -v ~/.jenkinsapi/:/root/.jenkinsapi catchzeng/jenkinsapi jenkinsapi create -j "job name" -f "folder name" -c "the content of jenkins job config.xml"
+docker run -v $HOME/.jenkinsapi/:/root/.jenkinsapi catchzeng/jenkinsapi jenkinsapi create -j "job name" -f "folder name" -c "the content of jenkins job config.xml"
 ```
 
 ### Jenkinsfile
@@ -41,7 +52,7 @@ pipeline {
     agent {
         docker {
             image 'catchzeng/jenkinsapi'
-            args '-v ~/.jenkinsapi/:/root/.jenkinsapi -u root'
+            args '-v $HOME/.jenkinsapi/:/root/.jenkinsapi -u root'
         }
     }
     stages {
@@ -66,7 +77,7 @@ import (
 )
 
 var jenkins = jks.Jenkins{
-	Host:     "https://jenkins.CatchZeng.com/",
+	Host:     "https://jenkins.catchzeng.com/",
 	UserName: "admin",
 	APIToken: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 }

@@ -1,10 +1,10 @@
 package config
 
 const (
-	// JenkinsHost jenkisn host
+	// JenkinsHost jenkins host
 	JenkinsHost = "host"
 	// JenkinsUserName jenkins user name
-	JenkinsUserName = "user"
+	JenkinsUserName = "username"
 	// JenkinsAPIToken jenkins API token
 	JenkinsAPIToken = "token"
 )
