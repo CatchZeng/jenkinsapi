@@ -3,8 +3,13 @@ package cmd
 import (
 	"log"
 
-	"github.com/CatchZeng/jenkinsapi/version"
+	v "github.com/CatchZeng/gutils/version"
 	"github.com/spf13/cobra"
+)
+
+const (
+	version   = "1.0.1"
+	buildTime = "2022/01/21"
 )
 
 // versionCmd represents the version command
@@ -16,8 +21,8 @@ var versionCmd = &cobra.Command{
 }
 
 func runVersionCmd(_ *cobra.Command, _ []string) {
-	version := version.GetVersion()
-	log.Println(version)
+	v := v.Stringify(version, buildTime)
+	log.Println(v)
 }
 
 func init() {

@@ -1,6 +1,6 @@
 # jenkinsapi
 
->  jenkinsapi is the go implementation of jenkins api. Support Docker, Jenkinsfile, command line, go module.
+> jenkinsapi is the go implementation of jenkins api. Support Docker, Jenkinsfile, command line, go module.
 
 ## Feature
 
@@ -8,7 +8,7 @@
 - [x] Support [Jenkinsfile](#Jenkinsfile)
 - [x] Support [module](#module)
 - [x] CreateItem
-  ![demo](/images/demo.png)
+      ![demo](/images/demo.png)
 
   ![demo-folder](/images/demo-folder.png)
 
@@ -20,10 +20,14 @@
 docker pull catchzeng/jenkinsapi
 ```
 
-## go get
+## go install
 
 ```shell
-go get github.com/CatchZeng/jenkinsapi
+# Go 1.16+
+go install github.com/CatchZeng/jenkinsapi@v1.0.1
+
+# Go version < 1.16
+go get -u github.com/CatchZeng/jenkinsapi@v1.0.1
 ```
 
 ## Usage

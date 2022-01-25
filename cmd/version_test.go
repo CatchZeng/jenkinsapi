@@ -7,7 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/CatchZeng/jenkinsapi/version"
+	v "github.com/CatchZeng/gutils/version"
+
 	"github.com/spf13/cobra"
 )
 
@@ -20,7 +21,7 @@ func Test_runVersionCmd(t *testing.T) {
 	runVersionCmd(&cobra.Command{}, []string{})
 	got := buf.String()
 
-	want := version.GetVersion()
+	want := v.Stringify(version, buildTime)
 
 	if !strings.Contains(got, want) {
 		t.Errorf("runVersionCmd() = %v, want %v", got, want)

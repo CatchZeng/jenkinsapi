@@ -18,7 +18,7 @@ var create = &cobra.Command{
 	Run: func(_ *cobra.Command, args []string) {
 		host, user, token, err := getConfig()
 		if err != nil {
-			log.Printf(err.Error())
+			log.Fatal(err.Error())
 			return
 		}
 
@@ -29,47 +29,46 @@ var create = &cobra.Command{
 		}
 
 		if len(job) < 1 {
-			log.Printf("job name can not be empty")
+			log.Fatal("job name can not be empty")
 			return
 		}
 
 		if len(folder) < 1 {
 			if err := jenkins.CreateItem(job, configXML); err != nil {
-				log.Printf(err.Error())
+				log.Fatal(err.Error())
 				return
 			}
 			return
 		}
 
 		if err := jenkins.CreateItemInFolder(folder, job, configXML); err != nil {
-			log.Printf(err.Error())
-			return
+			log.Fatal(err.Error())
 		}
 	},
 }
 
-func getConfig() (host string, user string, token string, err error) {
-	const errorFmt = "Jenkins %s is missing, please add in ~ /.jenkinsapi/config.yaml file, the key is '%s'"
+func getConfig() (string, string, string, error) {
+	const errorFmt = "jenkins %s is missing, please add in ~ /.jenkinsapi/config.yaml file, the key is '%s'"
 
-	host, err = config.GetConfig(config.JenkinsHost)
-	if len(host) < 1 {
+	host, err := config.GetConfig(config.JenkinsHost)
+	if err != nil || len(host) < 1 {
 		err = fmt.Errorf(errorFmt, config.JenkinsHost, config.JenkinsHost)
-		return
+		return host, "", "", err
 	}
 
-	user, err = config.GetConfig(config.JenkinsUserName)
-	if len(user) < 1 {
+	user, err := config.GetConfig(config.JenkinsUserName)
+	if err != nil || len(user) < 1 {
 		err = fmt.Errorf(errorFmt, config.JenkinsUserName, config.JenkinsUserName)
-		return
+		return host, user, "", err
 	}
 
-	token, err = config.GetConfig(config.JenkinsAPIToken)
-	if len(token) < 1 {
+	token, err := config.GetConfig(config.JenkinsAPIToken)
+	if err != nil || len(token) < 1 {
 		err = fmt.Errorf(errorFmt, config.JenkinsAPIToken, config.JenkinsAPIToken)
-		return
+		return host, user, token, err
 	}
 
-	return
+	return host, user, token, err
 }
 
 var folder, job, configXML string
