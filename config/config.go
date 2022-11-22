@@ -2,16 +2,16 @@ package config
 
 import (
 	"log"
+	"os"
 	"path"
 
-	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
 )
 
 // InitConfig reads in configs file and ENV variables if set.
 func InitConfig() {
 	// Find home directory.
-	home, err := homedir.Dir()
+	home, err := os.UserHomeDir()
 	if err != nil {
 		log.Panic(err)
 	}

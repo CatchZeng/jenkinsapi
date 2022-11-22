@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	v "github.com/CatchZeng/gutils/version"
+	v "github.com/go-ecosystem/utils/v2/version"
 
 	"github.com/spf13/cobra"
 )
