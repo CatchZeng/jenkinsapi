@@ -2,7 +2,7 @@ SHELL := /bin/bash
 BASEDIR = $(shell pwd)
 
 APP_NAME=jenkinsapi
-APP_VERSION=1.0.2
+APP_VERSION=1.1.0
 IMAGE_NAME="catchzeng/${APP_NAME}:${APP_VERSION}"
 IMAGE_LATEST="catchzeng/${APP_NAME}:latest"
 
