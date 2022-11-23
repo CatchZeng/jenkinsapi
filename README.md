@@ -24,10 +24,10 @@ docker pull catchzeng/jenkinsapi
 
 ```shell
 # Go 1.16+
-go install github.com/CatchZeng/jenkinsapi@v1.0.1
+go install github.com/CatchZeng/jenkinsapi@v1.1.0
 
 # Go version < 1.16
-go get -u github.com/CatchZeng/jenkinsapi@v1.0.1
+go get -u github.com/CatchZeng/jenkinsapi@v1.1.0
 ```
 
 ## Usage
